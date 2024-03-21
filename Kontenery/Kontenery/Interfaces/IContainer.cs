@@ -1,6 +1,6 @@
 ﻿namespace Kontenery.Interfaces;
 
-public class IContainer
+public interface IContainer
 {
     void Unload() {}
 

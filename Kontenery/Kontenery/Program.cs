@@ -2,5 +2,7 @@
 
 using Kontenery.Containers;
 
-// LiquidContainer lq = new LiquidContainer(300.0, 20.0, 50.0, 1000.0, true);
-// lq.Load(-120);
+LiquidContainer lq = new LiquidContainer(300.0, 20.0, 50.0, 1000.0, true);
+lq.Load(120);
+
+

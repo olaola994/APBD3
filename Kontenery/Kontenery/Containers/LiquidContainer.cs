@@ -35,12 +35,14 @@ public class LiquidContainer : Container, IHazardNotifier
         else
         {
             CargoWeight += cargoWeight;
+            Console.WriteLine("L Container loaded");
         }
     }
 
     public override void Unload()
     {
         CargoWeight = 0;
+        Console.WriteLine("L Container unloaded");
     }
 
     protected override string GetTypeIdentifier()

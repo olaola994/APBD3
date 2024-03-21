@@ -17,6 +17,7 @@ public class GasContainer : Container, IHazardNotifier
     public override void Unload()
     {
         CargoWeight *= CargoWeight * 0.05;
+        Console.WriteLine("G Container unloaded");
     }
 
     public void Load(double cargoWeight)
@@ -29,6 +30,7 @@ public class GasContainer : Container, IHazardNotifier
         }else
         {
             CargoWeight += cargoWeight;
+            Console.WriteLine("G Container loaded");
         }
     }
 

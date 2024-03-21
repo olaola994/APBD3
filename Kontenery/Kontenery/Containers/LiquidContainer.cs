@@ -4,7 +4,7 @@ namespace Kontenery.Containers;
 
 public class LiquidContainer : Container
 {
-    public LiquidContainer(double cargoWeight, double height) : base(cargoWeight, height)
+    public LiquidContainer(double cargoWeight, double height, double deadWeight, double deph) : base(cargoWeight, height, deadWeight, deph)
     {
         
     }

@@ -8,13 +8,12 @@ public class LiquidContainer : Container, IHazardNotifier
 {
     public bool IsDangerous { get; private set; }
     public double Capacity { get; private set; }
-    
-    public double CurrentCapacity { get; set; }
 
-    public LiquidContainer(double cargoWeight, double height, double deadWeight, double deph, double maxLoadCapacity, bool isDangerous) 
-        : base(cargoWeight, height, deadWeight, deph, maxLoadCapacity)
+    public LiquidContainer(double height, double deadWeight, double depth, double maxLoadCapacity, bool isDangerous) 
+        : base(height, deadWeight, depth, maxLoadCapacity)
     {
         IsDangerous = isDangerous;
+        
         if (IsDangerous)
         {
             Capacity = maxLoadCapacity * 0.5;
@@ -25,22 +24,23 @@ public class LiquidContainer : Container, IHazardNotifier
         }
     }
 
-    public override void Load(double cargoWeight)
+    public void Load(double cargoWeight)
     {
-        if (cargoWeight + CurrentCapacity > Capacity)
+        base.Load(cargoWeight);
+        if (cargoWeight + CargoWeight > Capacity)
         {
             NotifyHazard(SerialNumber);
             throw new OverfillException();
         }
         else
         {
-            CurrentCapacity += cargoWeight;
+            CargoWeight += cargoWeight;
         }
     }
 
     public override void Unload()
     {
-        CurrentCapacity = 0;
+        CargoWeight = 0;
     }
 
     protected override string GetTypeIdentifier()
@@ -50,6 +50,6 @@ public class LiquidContainer : Container, IHazardNotifier
 
     public void NotifyHazard(string containerSerialNumber)
     {
-        Console.WriteLine($"Dangerous Liquid Container serial no. {containerSerialNumber}");
+        Console.WriteLine($"Dangerous action. Liquid Container serial no. {containerSerialNumber}");
     }
 }

@@ -10,23 +10,31 @@ public abstract class Container : IContainer
     public double CargoWeight { get; set; }
     public double Height { get; set; }
     public double DeadWeight {get; set; }
-    public double Deph {get; set; }
+    public double Depth {get; set; }
     public double MaxLoadCapacity { get; set; }
     public string SerialNumber => _serialNumber;
     
    
-    protected Container(double cargoWeight, double height, double deadWeight, double deph, double maxLoadCapacity)
+    protected Container(double height, double deadWeight, double depth, double maxLoadCapacity)
     {
-        CargoWeight = cargoWeight;
+        if (height < 0 || deadWeight < 0 || depth < 0 || maxLoadCapacity < 0)
+        {
+            throw new ArgumentException("Arguments must be non-negative numbers.");
+        }
+        CargoWeight = 0;
         Height = height;
         DeadWeight = deadWeight;
-        Deph = deph;
+        Depth = depth;
         MaxLoadCapacity = maxLoadCapacity;
         _serialNumber = GenerateSerialNumber();
     }
 
     public abstract void Unload();
-    public abstract void Load(double cargoWeight);
+
+    public virtual void Load(double cargoWeight)
+    {
+        if (cargoWeight <= 0) throw new ArgumentException("Cargo weight must be a positive value.");
+    }
     protected abstract string GetTypeIdentifier();
 
     private string GenerateSerialNumber()

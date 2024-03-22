@@ -35,14 +35,14 @@ public class LiquidContainer : Container, IHazardNotifier
         else
         {
             CargoWeight += cargoWeight;
-            Console.WriteLine("L Container loaded");
+            Console.WriteLine($"L Container loaded, current weight: {CargoWeight}");
         }
     }
 
     public override void Unload()
     {
         CargoWeight = 0;
-        Console.WriteLine("L Container unloaded");
+        Console.WriteLine($"L Container unloaded, current weight: {CargoWeight}");
     }
 
     protected override string GetTypeIdentifier()
@@ -53,5 +53,11 @@ public class LiquidContainer : Container, IHazardNotifier
     public void NotifyHazard(string containerSerialNumber)
     {
         Console.WriteLine($"Dangerous action. Liquid Container serial no. {containerSerialNumber}");
+    }
+
+    public void info()
+    {
+        base.info();
+        Console.WriteLine($"isDangerous: {IsDangerous}\n");
     }
 }

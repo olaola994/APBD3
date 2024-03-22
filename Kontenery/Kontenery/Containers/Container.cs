@@ -44,5 +44,10 @@ public abstract class Container : IContainer
         _nextSerialNumber++;
         return serialNumber;
     }
+
+    public virtual void info()
+    {
+        Console.Write($"SerialNumber: {SerialNumber} - CargoWeight: {CargoWeight} - Height: {Height} - DeadWeight: - Depth: {Depth} - MaxLoadCapacity: {MaxLoadCapacity} - ");
+    }
     
 }

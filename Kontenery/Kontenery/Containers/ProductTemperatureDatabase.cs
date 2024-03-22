@@ -8,6 +8,16 @@ public class ProductTemperatureDatabase
     public ProductTemperatureDatabase()
     {
         productTemperatures = new Dictionary<string, double>();
+        productTemperatures.Add("Bananas", 13.3);
+        productTemperatures.Add("Chocolate", 18);
+        productTemperatures.Add("Fish", 2);
+        productTemperatures.Add("Meat", -15);
+        productTemperatures.Add("Ice cream", -18);
+        productTemperatures.Add("Frozen pizza", -30);
+        productTemperatures.Add("Cheese", 7.2);
+        productTemperatures.Add("Sausages", 5);
+        productTemperatures.Add("Butter", 20.5);
+        productTemperatures.Add("Eggs", 19);
     }
     public static ProductTemperatureDatabase Instance
     {

@@ -16,8 +16,8 @@ public class GasContainer : Container, IHazardNotifier
 
     public override void Unload()
     {
-        CargoWeight *= CargoWeight * 0.05;
-        Console.WriteLine("G Container unloaded");
+        CargoWeight -= ((CargoWeight * 95)/100);
+        Console.WriteLine($"G Container unloaded, current weight: {CargoWeight}");
     }
 
     public void Load(double cargoWeight)
@@ -30,7 +30,7 @@ public class GasContainer : Container, IHazardNotifier
         }else
         {
             CargoWeight += cargoWeight;
-            Console.WriteLine("G Container loaded");
+            Console.WriteLine($"G Container loaded, current weight: {CargoWeight}");
         }
     }
 
@@ -41,5 +41,10 @@ public class GasContainer : Container, IHazardNotifier
     public void NotifyHazard(string containerSerialNumber)
     {
         Console.WriteLine($"Dangerous action. Gas Container serial no. {containerSerialNumber}");
+    }
+    public void info()
+    {
+        base.info();
+        Console.WriteLine($"Pressure: {Pressure}\n");
     }
 }

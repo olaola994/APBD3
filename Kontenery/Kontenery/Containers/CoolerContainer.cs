@@ -27,18 +27,23 @@ public class CoolerContainer: Container
         }else
         {
             CargoWeight += cargoWeight;
-            Console.WriteLine("C Container loaded");
+            Console.WriteLine($"C Container loaded, current weight: {CargoWeight}");
         }
     }
 
     public override void Unload()
     {
         CargoWeight = 0;
-        Console.WriteLine("C Container unloaded");
+        Console.WriteLine($"C Container unloaded, current weight: {CargoWeight}");
     }
 
     protected override string GetTypeIdentifier()
     {
         return "C";
+    }
+    public void info()
+    {
+        base.info();
+        Console.WriteLine($"ProductType: {ProductType} - RequiredTemperature: {RequiredTemperature}\n");
     }
 }
